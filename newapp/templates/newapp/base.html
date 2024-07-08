@@ -1,0 +1,36 @@
+{% load static %}
+<html> 
+    <head>
+        <link rel="stylesheet" href="{% static 'newapp/styles.css' %}">
+    </head>
+    <body style="background: #b4dbeb;">
+        <nav class="bg-lightblue shadow-lg">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-7">
+                        <div >
+                            <a href="#" class="flex px-2 py-4">
+                            <img class="h-10 w-8" src="{% static 'newapp/images/shop.png' %}">
+                            <span class="text-black-500 font-bold">A-Z EASY SHOPPING EXPERIENCE</span>
+                            </a>
+                        </div>
+                        <div class="items-center flex space-x-1">
+                            <a href="#" class="py-4 px-2 text-black-500 border-b-2 border-blue-500">Home</a>
+                            <a href="{% url 'newapp:add_product' %}" class="py-4 px-5 text-black-500 border-b-2 border-blue-500">Post add</a>
+                            <a href="{% url 'newapp:items' %}" class="py-4 px-5 text-black-500 border-b-2 border-blue-500">View products</a>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'users:logout' %}" class="py-4 px-10 text-black-500">Logout</a>
+                            <a href="{% url 'users:profile' %}" class="py-4 px-10 text-black-500">Profile</a>
+                            <a href="{% url 'newapp:my_listings' %}" class="py-4 px-10 text-black-500">My listings</a>
+                            {% else %}
+                            <a class="py-4 px-40 text-black-500" href="{% url 'users:login' %}">Login</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

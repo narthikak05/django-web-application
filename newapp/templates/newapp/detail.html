@@ -1,0 +1,45 @@
+{% extends 'newapp/base.html' %}
+{% block content %}
+<div class="flex p-10 w-full h-200">
+    <img class="w-1/3" src="{{ item.image.url }}" alt="">
+    <div class="w-2/3 text-xl ml-5">
+        <div class="mt-5 text-indigo-500">{{ item.Name }}</div>
+        <div class="mt-5 text-indigo-500">{{ item.price }}</div>
+        <div class="mt-5 text-indigo-500">{{ item.desc }}</div>
+        <div class="mt-5 text-red">
+            Posted by:
+            <a href="{% url 'users:sellerprofile' item.seller_name.id %}">{{ item.seller_name }}</a>
+        </div>
+        <div class="mt-5 text-green">Contact number: {{ item.seller_name.profile.contact_number }}</div>
+        <div>
+            <button class="bg-green-500 text-gray px-3 py-2 mt-2" id="checkout">Checkout</button>
+        </div>
+    </div>
+</div>
+
+<!-- Ensure the script is placed correctly -->
+<script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+
+        var stripe=Stripe('{{stripe_publishable_key}}')
+        var checkoutButton=document.getElementById('checkout')
+        checkoutButton.addEventListener('click',function(){  
+            fetch("{% url 'newapp:api_checkout_session' id=item.id %}",{method:'POST',})
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(session){
+                return stripe.redirectToCheckout({sessionId:session.sessionId})
+            })
+            .then(function(result){
+                if(result.error){
+                    alert(result.error.message)
+                }   
+            })
+            .catch(function(error){
+                console.error('Error',error)
+            })
+                
+        })
+</script> 
+{% endblock %}
