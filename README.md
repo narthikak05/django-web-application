@@ -5,9 +5,14 @@
 This is a shopping website built with Django, designed for  selling products.User needs to create an account on our website to buy products and to proceed with the payment section.
 
 ## Technologies used:
+### Frontend technology:
+<li>HTML,CSS,JavaScript</li>
+<li>CSS Frameworks:Bootstrap,Tailwind CSS</li>
+
+### Backend technology:
 <li>Django</li>
-<li>Tailwind CSS</li>
-<li>sqlite3</li>
+<li>Python</li>
+<li>Database:sqlite3</li>
 
 ## Features:
 <li>Search for products availability</li>
@@ -36,4 +41,5 @@ python manage.py migrate
 python manage.py runserver
 ```
 ### Video attachment:
-[video2.zip](https://github.com/user-attachments/files/16138510/video2.zip)
+https://github.com/narthikak05/django-webapplication/assets/174184445/62d93a49-5f2d-4441-b4b4-a3924f51621b
+
