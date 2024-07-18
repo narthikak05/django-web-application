@@ -1,5 +1,5 @@
 # Django web application
-# A-Z Shopping 
+# A-Z Shopping Experience
 
 ## Description:
 This is a shopping website built with Django, designed for  selling products.User needs to create an account on our website to buy products and to proceed with the payment section.
